@@ -188,6 +188,8 @@ public class GameTest {
 		assertEquals("Food added", food.getPoints(), player.getPoints());
 		assertEquals("Player moved", newTile.topSprite(), player);
 		assertFalse("Food gone", newTile.containsSprite(food));
+		assertTrue("Game Won", game.won());
+		assertFalse("Player alive!", game.died());
 	}
 
 	/**
@@ -202,6 +204,7 @@ public class GameTest {
 
 		game.moveGhost(theGhost, Direction.LEFT);
 		assertFalse("Move kills player", game.getPlayer().isAlive());
+		assertTrue("Move kills player", game.died());
 		
 		Tile newTile = theGhost.getTile();
 		assertThat(tileAt(game, 0, 0), equalTo(newTile));
@@ -287,6 +290,9 @@ public class GameTest {
 		return g.getBoard().tileAt(x, y);
 	}
 
-	
+	@Test
+	public void testDied() {
+		
+	}
 	
 }

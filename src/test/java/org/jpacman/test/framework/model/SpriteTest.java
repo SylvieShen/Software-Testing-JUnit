@@ -12,6 +12,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.jpacman.framework.model.Sprite;
 import org.jpacman.framework.model.Tile;
+import org.jpacman.framework.model.IBoardInspector.SpriteType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -122,4 +123,14 @@ public class SpriteTest {
 			}
 		};
 	}
+	
+	/**
+	 * Testing GetSpriteType()
+	 */
+	@Test
+	public void testGetSpriteType() {
+		assertThat(john.getSpriteType(), equalTo(SpriteType.OTHER));
+		assertThat(john.toString(), equalTo(john.getSpriteType().toString() + " occupying " + john.getTile()));
+	}
+	
 }
